@@ -6,6 +6,7 @@ import TaskApp from "./pages/TaskApp";
 import UserCRUD from "./pages/UserCRUD";
 import Posts from "./pages/posts/Index";
 import AddPost from "./pages/posts/Add";
+import EditPost from "./pages/posts/Edit";
 
 
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="posts">
             <Route index element={<Posts />} />
             <Route path="add" element={<AddPost />} />
+            <Route path="edit/:id" element={<EditPost />} />
           </Route>
         </Route>
       </Routes>

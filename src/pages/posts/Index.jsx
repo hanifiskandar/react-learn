@@ -1,5 +1,3 @@
-
-
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "../../supabaseClient";
@@ -21,16 +19,24 @@ export default function PostIndex() {
     else setPosts(data);
   };
 
+  const handleDelete = async (id) => {
+    const { error } = await supabase.from("posts").delete().eq("id", id);
+    if (!error) {
+      setPosts(posts.filter((post) => post.id !== id)); // update UI immediately
+    }
+  };
+
   return (
     <div>
       <h2>Posts List</h2>
       <Link to="/posts/add">Add New Post</Link>
-      {/* You can fetch and display posts here like you did earlier */}
 
       <ul>
-        {posts.map((posts) => (
-          <li key={posts.id}>
-            {posts.title} {posts.completed ? "✅" : ""}
+        {posts.map((post) => (
+          <li key={post.id}>
+            {post.title} {post.completed ? "✅" : ""}{" "}
+            <Link to={`/posts/edit/${post.id}`}>✏️ Edit</Link>{" "}
+            <button onClick={() => handleDelete(post.id)}>🗑️ Delete</button>
           </li>
         ))}
       </ul>

@@ -6,6 +6,8 @@ import { supabase } from "../../supabaseClient";
 export default function EditPost() {
   const { id } = useParams();
   const [title, setTitle] = useState("");
+  const [completed, setCompleted] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,13 +20,13 @@ export default function EditPost() {
       .select("*")
       .eq("id", id)
       .single();
-    if (data) setTitle(data.title);
+    if (data) setTitle(data.title) ,setCompleted(data.completed);
   };
 
   const handleUpdate = async () => {
     const { error } = await supabase
       .from("posts")
-      .update({ title })
+      .update({ title, completed })
       .eq("id", id);
     if (!error) navigate("/posts");
   };
@@ -32,12 +34,25 @@ export default function EditPost() {
   return (
     <div>
       <h2>Edit Post</h2>
-      <input
-        type="text"
-        placeholder="Post title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
+      <div style={{ marginBottom: "1rem" }}>
+        <input
+            type="text"
+            placeholder="Post title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
+
+      <div style={{ marginBottom: "1rem" }}>
+        <label>
+          <input
+            type="checkbox"
+            checked={completed}
+            onChange={(e) => setCompleted(e.target.checked)}
+          />{" "}
+          Completed
+        </label>
+      </div>
       <button onClick={handleUpdate}>Update</button>
     </div>
   );

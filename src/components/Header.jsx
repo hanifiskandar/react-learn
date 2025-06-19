@@ -13,7 +13,10 @@ function Header() {
         <Link to="/tasks" style={{ marginRight: "1rem" }}>
           Tasks
         </Link>
-        <Link to="/users">Users</Link>
+        <Link to="/users" style={{ marginRight: "1rem" }}>
+          Users
+        </Link>
+        <Link to="/posts">Posts</Link>
       </nav>
     </header>
   );

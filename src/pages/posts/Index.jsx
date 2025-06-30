@@ -4,10 +4,11 @@ import { supabase } from "../../supabaseClient";
 
 export default function PostIndex() {
   const [posts, setPosts] = useState([]);
+  const statusOptions = ["pending", "approve", "amend"];
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, []); 
 
   const fetchPosts = async () => {
     const { data, error } = await supabase
@@ -29,7 +30,47 @@ export default function PostIndex() {
   return (
     <div>
       <h2>Posts List</h2>
+      <h3>Test</h3>
+      <h3>Select Status (checkbox)</h3>
+      {statusOptions.map((status) => (
+        <label key={status} style={{ display: "block" }}>
+          <input
+            type="checkbox"
+            value={status}
+            onChange={(e) => console.log("checked.", status, e.target.checked)}
+          />
+          {status}
+        </label>
+      ))}
+      <p>----------------------------------</p>
+
+      <h3>Select Status (Radio)</h3>
+      {statusOptions.map((status) => (
+        <label key={status} style={{ display: "block" }}>
+          <input
+            type="radio"
+            name="status"
+            value={status}
+            onChange={() => console.log("Selected:", status)}
+          />
+          {status}
+        </label>
+      ))}
+
+      <p>----------------------------------</p>
+      <h3>Select Status (Dropdown)</h3>
+      <select onChange={(e) => console.log("selected:", e.target.value)}>
+        <option value="">-- Choose Status --</option>
+        {statusOptions.map((status) => (
+          <option key={status} value={status}>
+            {status}
+          </option>
+        ))}
+      </select>
+      <p>----------------------------------</p>
+
       <Link to="/posts/add">Add New Post</Link>
+      {/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
 
       <ul>
         {posts.map((post) => (

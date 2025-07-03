@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 import TaskApp from "./pages/TaskApp";
 import UserCRUD from "./pages/UserCRUD";
 import Posts from "./pages/posts/Index";
@@ -20,6 +21,7 @@ function App() {
           <Route path="tasks" element={<TaskApp />} />
           <Route path="users" element={<UserCRUD />} />
           {/* <Route path="posts" element={<Posts />} /> */}
+          <Route path="contact" element={<Contact/>}/>
 
           <Route path="posts">
             <Route index element={<Posts />} />

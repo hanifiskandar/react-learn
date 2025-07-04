@@ -19,7 +19,10 @@ function Header() {
         <Link to="/contact" style={{ marginRight: "1rem" }}>
           Contact
         </Link>
-        <Link to="/posts">Posts</Link>
+        <Link to="/posts" style={{ marginRight: "1rem" }}>
+          Posts
+        </Link>
+        <Link to="/students">Student</Link>
       </nav>
     </header>
   );

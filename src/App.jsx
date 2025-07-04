@@ -8,6 +8,9 @@ import UserCRUD from "./pages/UserCRUD";
 import Posts from "./pages/posts/Index";
 import AddPost from "./pages/posts/Add";
 import EditPost from "./pages/posts/Edit";
+import Students from "./pages/students/Index";
+import AddStudent from "./pages/students/Add";
+
 
 
 
@@ -27,6 +30,11 @@ function App() {
             <Route index element={<Posts />} />
             <Route path="add" element={<AddPost />} />
             <Route path="edit/:id" element={<EditPost />} />
+          </Route>
+
+          <Route path="students">
+            <Route index element={<Students />}/>
+            <Route path="add" element={<AddStudent />} />
           </Route>
         </Route>
       </Routes>

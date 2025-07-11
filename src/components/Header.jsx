@@ -22,6 +22,10 @@ function Header() {
         <Link to="/posts" style={{ marginRight: "1rem" }}>
           Posts
         </Link>
+        <Link to="/car-crud" style={{ marginRight: "1rem" }}>
+          Car
+        </Link>
+
         <Link to="/students">Student</Link>
       </nav>
     </header>

@@ -11,6 +11,9 @@ import EditPost from "./pages/posts/Edit";
 import Students from "./pages/students/Index";
 import AddStudent from "./pages/students/Add";
 
+///
+import CarCRUD from "./pages/CarCRUD";
+
 
 
 
@@ -36,6 +39,8 @@ function App() {
             <Route index element={<Students />}/>
             <Route path="add" element={<AddStudent />} />
           </Route>
+
+          <Route path="car-crud" element={<CarCRUD />}/>
         </Route>
       </Routes>
     </Router>

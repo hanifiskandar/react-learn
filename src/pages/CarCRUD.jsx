@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient";
 import { CarForm } from "../components/style1/CarForm";
+import Button from "../components/Button";
+
 // import { CarList } from "../components/style1/CarList";
 //
 
@@ -65,6 +67,7 @@ export default function App() {
   return (
     <div className="p-6 max-w-2xl mx-auto">
         <h1 className="text-3xl font-bold mb-4"> React + Supabase CRUD</h1>
+        <Button onClick={() => alert('clicked')}>Click Me</Button>
 
         <CarForm onSubmit={addCar} />
 
